@@ -9,6 +9,7 @@ class SuperheroEntry {
 
 //the superhero list class
 class SuperheroList {
+  //add superhero
   addSuperhero(entry) {
     const listData = document.querySelector(".superhero-list-data");
     const listContainer = document.createElement("ul");
@@ -20,6 +21,16 @@ class SuperheroList {
     <li>${entry.superheroPower}</li>
     <i class="fas fa-trash"></i>
     `;
+
+    listData.appendChild(listContainer);
+  }
+  //clear superhero input fields
+  clearSuperheroInputs() {
+    [
+      document.querySelector("#name").value,
+      document.querySelector("#universe").value,
+      document.querySelector("#power").value,
+    ] = ["", "", ""];
   }
 }
 
@@ -44,5 +55,6 @@ form.addEventListener("submit", function (e) {
   const list = new SuperheroList();
 
   list.addSuperhero(entry);
+  list.clearSuperheroInputs();
   console.log(list);
 });
