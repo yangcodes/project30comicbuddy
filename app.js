@@ -8,7 +8,9 @@ class SuperheroEntry {
 }
 
 //the superhero list class
-class SuperheroList {}
+class SuperheroList {
+  addSuperhero(entry);
+}
 
 //...........................events................
 const form = document.querySelector(".superhero-form");
@@ -19,4 +21,17 @@ form.addEventListener("submit", function (e) {
     document.querySelector("#universe").value,
     document.querySelector("#power").value,
   ];
+
+  //intantiating the superheroEntry class
+  const entry = new SuperheroEntry(
+      superheroName,
+    superheroUniverse,
+    superheroPower
+  );
+
+  //intantiating the superheroList class
+  const list = new SuperheroList();
+
+  list.addSuperhero(entry);
+  console.log(list);
 });
