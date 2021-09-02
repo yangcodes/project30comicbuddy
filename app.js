@@ -24,13 +24,35 @@ class SuperheroList {
 
     listData.appendChild(listContainer);
   }
-  //clear superhero input fields
+  //clear superhero input fields function
   clearSuperheroInputs() {
     [
       document.querySelector("#name").value,
       document.querySelector("#universe").value,
       document.querySelector("#power").value,
     ] = ["", "", ""];
+  }
+
+  //validation error function
+  validationError() {
+    document.querySelector(".validate-error").classList.add("show-validation");
+    setTimeout(() => {
+      document
+        .querySelector(".validate-error")
+        .classList.remove("show-validation");
+    }, 2500);
+  }
+
+  //validation success function
+  validationSuccess() {
+    document
+      .querySelector(".validate-success")
+      .classList.add("show-validation");
+    setTimeout(() => {
+      document
+        .querySelector(".validate-success")
+        .classList.remove("show-validation");
+    }, 1500);
   }
 }
 
