@@ -35,6 +35,7 @@ class SuperheroList {
 }
 
 //...........................events................
+//form submission event listener
 const form = document.querySelector(".superhero-form");
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -56,5 +57,19 @@ form.addEventListener("submit", function (e) {
 
   list.addSuperhero(entry);
   list.clearSuperheroInputs();
+
+  //validate the form if one or more of the input fields are empty
+  if (
+    superheroName === "" ||
+    superheroUniverse === "" ||
+    superheroPower === ""
+  ) {
+    list.validationError();
+    console.log("Error");
+  } else {
+    list.addSuperhero(entry);
+    list.clearSuperheroInputs();
+    list.validationSuccess();
+  }
   console.log(list);
 });
