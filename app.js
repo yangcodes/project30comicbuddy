@@ -56,6 +56,25 @@ class SuperheroList {
   }
 }
 
+//storesuperhero class
+class StoreSuperhero {
+  //get superheroes from LS
+  static getSuperhero() {
+    let superheroes;
+    if (localStorage.getItem("superheroes") === null) {
+      superheroes = [];
+    } else {
+      superheroes = JSON.parse(localStorage.getItem("superheroes"));
+    }
+    return superheroes;
+  }
+  //add superheroes from LS
+  static addSuperhero(entry) {
+    const superheroesList = StoreSuperhero.getSuperhero();
+    superheroesList.push(entry);
+    localStorage.setItem("superheroes", JSON.stringify(superheroesList));
+  }
+}
 //...........................events................
 //form submission event listener
 const form = document.querySelector(".superhero-form");
@@ -87,11 +106,14 @@ form.addEventListener("submit", function (e) {
     superheroPower === ""
   ) {
     list.validationError();
-    console.log("Error");
+    //console.log("Error");
   } else {
     list.addSuperhero(entry);
     list.clearSuperheroInputs();
     list.validationSuccess();
+
+    //adding superhero to local storage
+    StoreSuperhero.addSuperhero(entry);
   }
   console.log(list);
 });
